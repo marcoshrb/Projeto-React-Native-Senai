@@ -1,6 +1,7 @@
 package com.marcos.condominiomanagement.model;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.AllArgsConstructor;
@@ -14,5 +15,6 @@ public class VisitanteModel {
     private String id;
     private String name;
     private Data data;
-    private String idMorador;
+    @DBRef
+    private MoradorModel idMorador;
 }
