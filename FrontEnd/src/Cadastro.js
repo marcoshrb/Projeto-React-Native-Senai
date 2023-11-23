@@ -44,6 +44,7 @@ export default function Cadastro(props) {
           <View>
 
             <Input
+              style={styles.Inputs}
               placeholder='Nome:'
               leftIcon={
                 <Icon
@@ -56,27 +57,21 @@ export default function Cadastro(props) {
 
             <View>
               <Input
-                placeholder='Idade:'
-                leftIcon={{ type: 'font-awesome', name: 'boy' }}
+                style={styles.Inputs}
+                placeholder='Apartamento:'
+                leftIcon={{ type: 'font-awesome', name: 'home' }}
               />
             </View>
             <View>
               <Input
-                leftIcon={{ type: 'font-awesome', name: 'transgender' }}
-                placeholder='Sexo:'
+                style={styles.Inputs}
+                leftIcon={{ type: 'font-awesome', name: 'dropbox' }}
+                placeholder='Bloco:'
               />
             </View>
 
-
             <Input
-              placeholder="Email:"
-              leftIcon={{ type: 'font-awesome', name: 'envelope' }}
-              style={styles}
-              onChangeText={value => this.setState({ comment: value })}
-            />
-
-
-            <Input
+              style={styles.Inputs}
               placeholder='Senha:'
               leftIcon={{ type: 'font-awesome', name: 'lock' }}
               errorStyle={{ color: 'red' }}
@@ -84,7 +79,10 @@ export default function Cadastro(props) {
               secureTextEntry={true}
             />
 
-            <Input placeholder="Confirmar senha" secureTextEntry={true} />
+            <Input 
+            style={styles.Inputs}
+            placeholder="Confirmar senha" secureTextEntry={true}
+            leftIcon={{ type: 'font-awesome', name: 'unlock' }} />
 
           </View>
 
@@ -95,7 +93,7 @@ export default function Cadastro(props) {
           </TouchableOpacity>
 
           <TouchableOpacity
-            style={styles.touchCadastrar}
+            style={styles.touchCancelar}
             onPress={() => props.navigation.navigate("Login")}>
             <Text>Cancelar</Text>
           </TouchableOpacity>
@@ -116,52 +114,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   cardPrincipal: {
-    padding: "20px",
+    padding: "10px",
     flex: 1,
     backgroundColor: "white",
     alignItems: "center",
     justifyContent: "center",
-    maxHeight: "600px",
-    opacity: "0.9",
     borderRadius: "10px",
-    width: "100%",
-    maxheight: "500px"
+    minWidth: "500px"
   },
 
-  textosInputGrande: {
-    marginTop: "10px",
-    height: "25px",
-    marginBottom: "20px",
-    backgroundColor: "white",
-    borderRadius: "10px",
-    padding: "10px",
-    width: "300px"
-  },
-  textosInputPequeno: {
-  },
-  InputsPequenos: {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "flex-start"
-  },
-  SwitchPequenos: {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "flex-start",
-    marginTop: "10px",
-    marginBottom: "10px"
-  },
-  Switch: {
-    marginRight: "10px"
-  },
-  Formata: {
-    display: "flex",
-    alignItems: "flex-start"
-  },
-  FormataDireita: {
-    display: "flex",
-    alignItems: "flex-start",
-    marginLeft: "20px"
+  Inputs: {
+    width: "100%"
   },
   touchCadastrar: {
     width: "200px",
@@ -172,5 +135,9 @@ const styles = StyleSheet.create({
     borderRadius: "5px",
     margin: "10px",
     marginBottom: "20px"
+  },
+  touchCancelar :{
+    marginTop: "2px",
+    marginBottom: "2px"
   }
 });

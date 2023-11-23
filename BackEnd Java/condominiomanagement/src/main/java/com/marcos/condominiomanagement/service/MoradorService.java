@@ -18,8 +18,8 @@ public class MoradorService {
         return this.moradorRepository.save(moradorModel);
     }
 
-    public void save(String id, String name, int numAp, int numBlc, boolean sindico, boolean taxaCond){
-        this.moradorRepository.save(new MoradorModel(id, name, numAp, numBlc, sindico, taxaCond));
+    public void save(String id, String name,String senha, int numAp, int numBlc, boolean sindico, boolean taxaCond){
+        this.moradorRepository.save(new MoradorModel(id, name, senha, numAp, numBlc, sindico, taxaCond));
     }
 
     public List<MoradorModel> findAll(){

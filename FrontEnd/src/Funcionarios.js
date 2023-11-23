@@ -25,27 +25,27 @@ function Container(props) {
 
 // }
 
-export default function Financeiro(props) {
+export default function Funcionarios(props) {
 
   return (
     <View style={styles.Container}>
-      <View style={{ backgroundColor: "orange", flex: '1', justifyContent: "center", alignItems: "center", maxHeight: "80px" }}>
-        <Image
-          source={require('../img/imgLogoArvore2.png')}
-          style={{
-            height: "60px",
-            width: "60px",
-            margin: "20px"
-          }}
-        />
-      </View>
+    <View style={{ backgroundColor: "orange", flex: '1', justifyContent: "center", alignItems: "center", maxHeight: "80px" }}>
+      <Image
+        source={require('../img/imgLogoArvore2.png')}
+        style={{
+          height: "60px",
+          width: "60px",
+          margin: "20px"
+        }}
+      />
     </View>
+  </View>
   );
 }
 
 const styles = StyleSheet.create({
   Container: {
     flex: 1
-  },
+  }
   
 });

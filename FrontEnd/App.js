@@ -9,7 +9,7 @@ import Cadastro from './src/Cadastro.js';
 import TelaInicial from './src/TelaInicial.js';
 import Eventos from './src/Eventos.js'
 import Financeiro from './src/Financeiro.js'
-import Cameras from './src/Cameras.js'
+import Funcionarios from './src/Funcionarios.js'
 
 import { Ionicons } from '@expo/vector-icons'
 import { useState, useContext } from 'react';
@@ -18,7 +18,7 @@ import { useState, useContext } from 'react';
 
 export default function App() {
 
-  const [utils, setUtils] = useState({users:[],isAuthenticated:false})
+  const [utils, setUtils] = useState({users:[],isAuthenticated:true})
 
   const Stack = createStackNavigator();
   const Tab = createBottomTabNavigator();
@@ -45,7 +45,7 @@ export default function App() {
 
             return <Ionicons name={iconName} size={size} color={color} />;
             },
-            tabBarActiveTintColor: 'blue',
+            tabBarActiveTintColor: 'orange',
             tabBarInactiveTintColor: 'gray',
             headerShown: false,
             tabBarStyle : {
@@ -96,8 +96,8 @@ export default function App() {
               }}
           />
           <Tab.Screen 
-              name="Cameras" 
-              component={Cameras} 
+              name="Funcionarios" 
+              component={Funcionarios} 
               options = {{
                   tabBarIcon : ({ color, size, focused}) =>{
                   if (focused) {

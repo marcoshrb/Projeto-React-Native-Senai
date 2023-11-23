@@ -17,106 +17,186 @@ export default function Eventos(props) {
   const [visibleAssembleias, setVisibleAssembleias] = useState(false);
   const [visibleEleicoes, setVisibleEleicoes] = useState(false);
 
-  const toggleDropdownChurrasqueiras = () => {
-    setVisibleChurrasqueiras(!visibleChurrasqueiras);
-  };
-
-  const toggleDropdownAssembleias = () => {
+  const DropdownAssembleias = () => {
     setVisibleAssembleias(!visibleAssembleias);
   };
 
-  const toggleDropdownEleicoes = () => {
+  const DropdownChurrasqueiras = () => {
+    setVisibleChurrasqueiras(!visibleChurrasqueiras);
+  };
+
+  const DropdownEleicoes = () => {
     setVisibleEleicoes(!visibleEleicoes);
   };
 
 
   return (
     <View style={styles.Container}>
-      <View>
-      
-        <View style={styles.cardPrincipal}>
-          <TouchableOpacity onPress={toggleDropdownChurrasqueiras}>
-            <Text style={styles.TiTulos}>Churrasqueiras</Text>
-          </TouchableOpacity>
-          {visibleChurrasqueiras && (
-            <View>
-              <Calendar
-                onDayPress={day => {
-                  setSelected(day.dateString);
-                }}
-                markedDates={{
-                  [selected]: { selected: true, disableTouchEvent: true, selectedDotColor: 'orange' }
-                }}
-                style = {styles.calendario}
-              />
-            </View>
-          )}
-          
-        </View>
-
-        <View style={styles.cardPrincipal}>
-          <TouchableOpacity onPress={toggleDropdownAssembleias}>
-            <Text style={styles.TiTulos}>Assembleias</Text>
-          </TouchableOpacity>
-          {visibleAssembleias && (
-            <View>
-              <Calendar
-                onDayPress={day => {
-                  setSelected(day.dateString);
-                }}
-                markedDates={{
-                  [selected]: { selected: true, disableTouchEvent: true, selectedDotColor: 'orange' }
-                }}
-                style = {styles.calendario}
-              />
-
-            </View>
-          )}
-       
-        </View>
-        <View style={styles.cardPrincipal}>
-          <TouchableOpacity onPress={toggleDropdownEleicoes}>
-            <Text style={styles.TiTulos}>Eleições</Text>
-          </TouchableOpacity>
-          {visibleEleicoes && (
-            <View>
-              <Calendar
-                onDayPress={day => {
-                  setSelected(day.dateString);
-                }}
-                markedDates={{
-                  [selected]: { selected: true, disableTouchEvent: true, selectedDotColor: 'orange' }
-                }}
-                style = {styles.calendario}
-              />
-
-            </View>
-          )}
-       
-        </View>
+      <View style={{ backgroundColor: "orange", flex: '1', justifyContent: "center", alignItems: "center", maxHeight: "80px" }}>
+        <Image
+          source={require('../img/imgLogoArvore2.png')}
+          style={{
+            height: "60px",
+            width: "60px",
+            margin: "20px"
+          }}
+        />
       </View>
+      <View>
+
+        <View style={styles.BoxEventos}>
+          <TouchableOpacity
+            onPress={DropdownAssembleias}
+            style={styles.touchDropdown}
+          >
+            <Text style={styles.infoText}>Assembleias de Condomínio</Text>
+          </TouchableOpacity>
+        </View>
+
+        {visibleAssembleias && (
+          <View>
+            <Calendar
+              onDayPress={day => {
+                setSelected(day.dateString);
+              }}
+              markedDates={{
+                [selected]: { selected: true, disableTouchEvent: true, selectedDotColor: 'orange' }
+              }}
+              style={styles.calendario}
+            />
+            <View style={{ flex: "1", flexDirection: "row" }}>
+              <TouchableOpacity
+                style={styles.buttonDeletar}>
+                <Text >Deletar</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.buttonReservar}>
+                <Text >Marcar</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        )}
+
+        <View style={styles.BoxEventos}>
+          <TouchableOpacity
+            onPress={DropdownChurrasqueiras}
+            style={styles.touchDropdown}
+          >
+            <Text style={styles.infoText}>Churrasqueiras</Text>
+          </TouchableOpacity>
+        </View>
+
+        {visibleChurrasqueiras && (
+          <View>
+            <Calendar
+              onDayPress={day => {
+                setSelected(day.dateString);
+              }}
+              markedDates={{
+                [selected]: { selected: true, disableTouchEvent: true, selectedDotColor: 'orange' }
+              }}
+              style={styles.calendario}
+            />
+            <View style={{ flex: "1", flexDirection: "row" }}>
+              <TouchableOpacity
+                style={styles.buttonDeletar}>
+                <Text >Deletar</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.buttonReservar}>
+                <Text >Marcar</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        )}
+
+        <View style={styles.BoxEventos}>
+          <TouchableOpacity
+            onPress={DropdownEleicoes}
+            style={styles.touchDropdown}
+          >
+            <Text style={styles.infoText}>Eleições</Text>
+          </TouchableOpacity>
+        </View>
+
+        {visibleEleicoes && (
+          <View>
+            <Calendar
+              onDayPress={day => {
+                setSelected(day.dateString);
+              }}
+              markedDates={{
+                [selected]: { selected: true, disableTouchEvent: true, selectedDotColor: 'orange' }
+              }}
+              style={styles.calendario}
+            />
+            <View style={{ flex: "1", flexDirection: "row" }}>
+              <TouchableOpacity
+                style={styles.buttonDeletar}>
+                <Text >Deletar</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.buttonReservar}>
+                <Text >Marcar</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        )}
+
+
+      </View>
+
     </View>
+
+
   );
 }
 
 const styles = StyleSheet.create({
   Container: {
-    flex: 1,
-    height: "200px"
+    flex: 1
   },
-  cardPrincipal: {
+
+  BoxEventos: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'orange',
+    padding: '15px',
+    borderRadius: '15px',
+    margin: '15px',
+    maxWidth: '100%',
+  },
+  touchDropdown: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignContent: 'center',
+  },
+  infoText: {
+    color: 'black',
+    fontSize: '20px',
+    fontWeight: '500',
+    textAlign: 'center'
+  },
+  buttonReservar: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "orange",
     padding: "10px",
-    marginTop: "10px",
+    minWidth: "40%",
+    borderRadius: "10px",
+    margin: "10px"
+  },
+  buttonDeletar: {
     flex: 1,
-    backgroundColor: "dodgerblue",
-    opacity: "0.9",
-    borderRadius: "10px"
-  },
-  TiTulos: {
-    fontSize: "40px",
-    marginBottom: "20px"
-  },
-  calendario : {
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "indianred",
+    padding: "10px",
+    minWidth: "40%",
+    borderRadius: "10px",
     margin: "10px"
   }
+
 });

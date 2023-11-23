@@ -52,7 +52,7 @@ public class MoradorController {
 
     @PutMapping("/{id}")
     public void putMorador(@RequestBody MoradorModel newMorador, @PathVariable String id) {
-        moradorService.save((String) id, (String) newMorador.getName(), (int) newMorador.getNumAp(),
+        moradorService.save((String) id, (String) newMorador.getName(), (String) newMorador.getSenha(), (int) newMorador.getNumAp(),
                 (int) newMorador.getNumBlc(), newMorador.getSindico(), newMorador.getTaxaCond() );
     }
 

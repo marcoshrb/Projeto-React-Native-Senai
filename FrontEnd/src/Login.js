@@ -15,7 +15,7 @@ export default function Login(props) {
 
   return (
     <View style={styles.container}>
-      <ImageBackground source={require('../img/areaDeLazer.jpg')} resizeMode="cover" style={styles.image}>
+      <ImageBackground source={require('../img/foto-principal.jpg')} resizeMode="cover" style={styles.image}>
 
         <View>
           <Image
@@ -78,7 +78,8 @@ const styles = StyleSheet.create({
   },
   LoginTitulo: {
     fontSize: "60px",
-    marginBottom: "60px"
+    marginBottom: "60px",
+    color: "white"
   },
   cardPrincipal: {
     padding: "20px",
@@ -94,7 +95,7 @@ const styles = StyleSheet.create({
   },
   touchLogin: {
     width: "300px",
-    backgroundColor: "dodgerblue",
+    backgroundColor: "orange",
     padding: "10px",
     justifyContent: "center",
     alignItems: "center",
