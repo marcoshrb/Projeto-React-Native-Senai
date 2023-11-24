@@ -14,22 +14,11 @@ function Container(props) {
 }
 
 
-// const conexacaoHost = async (name, age) => {
-
-//   try {
-//     const response = await axios.post("http://localhost:8080/user", { name, age});
-//     console.log('Resposta da API: ', response);
-//   } catch (error) {
-//     console.error('Erro ao enviar', error)
-//   }
-
-// }
-
 export default function Financeiro(props) {
 
   return (
     <View style={styles.Container}>
-      <View style={{ backgroundColor: "orange", flex: '1', justifyContent: "center", alignItems: "center", maxHeight: "80px" }}>
+      <View style={{ backgroundColor: "forestgreen", flex: '1', justifyContent: "center", alignItems: "center", maxHeight: "80px" }}>
         <Image
           source={require('../img/imgLogoArvore2.png')}
           style={{
@@ -39,6 +28,9 @@ export default function Financeiro(props) {
           }}
         />
       </View>
+      <Text style={{ display: "flex", justifyContent: "center", marginTop: "10px", fontSize: "20px", fontWeight: "bold", fontStyle: "italic" }}>
+        FINANCEIRO
+      </Text>
     </View>
   );
 }
@@ -47,5 +39,5 @@ const styles = StyleSheet.create({
   Container: {
     flex: 1
   },
-  
+
 });

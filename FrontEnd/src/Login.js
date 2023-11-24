@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
   },
   touchLogin: {
     width: "300px",
-    backgroundColor: "orange",
+    backgroundColor: "forestgreen",
     padding: "10px",
     justifyContent: "center",
     alignItems: "center",

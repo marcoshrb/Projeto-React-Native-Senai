@@ -23,6 +23,7 @@
     "react-native-dropdown-select-list": "^2.0.5",
     "react-native-elements": "^3.4.3",
     "react-native-snap-carousel-v4": "^1.0.1",
+    "react-native-table-component": "^1.2.2",
     "react-native-web": "~0.19.6"
   },
   "devDependencies": {

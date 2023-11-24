@@ -70,20 +70,6 @@ export default function Cadastro(props) {
               />
             </View>
 
-            <Input
-              style={styles.Inputs}
-              placeholder='Senha:'
-              leftIcon={{ type: 'font-awesome', name: 'lock' }}
-              errorStyle={{ color: 'red' }}
-              errorMessage=''
-              secureTextEntry={true}
-            />
-
-            <Input 
-            style={styles.Inputs}
-            placeholder="Confirmar senha" secureTextEntry={true}
-            leftIcon={{ type: 'font-awesome', name: 'unlock' }} />
-
           </View>
 
           <TouchableOpacity
@@ -92,11 +78,6 @@ export default function Cadastro(props) {
             <Text>Cadastrar</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity
-            style={styles.touchCancelar}
-            onPress={() => props.navigation.navigate("Login")}>
-            <Text>Cancelar</Text>
-          </TouchableOpacity>
 
         </View>
       </ImageBackground>
@@ -119,7 +100,6 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     alignItems: "center",
     justifyContent: "center",
-    borderRadius: "10px",
     minWidth: "500px"
   },
 
@@ -128,7 +108,7 @@ const styles = StyleSheet.create({
   },
   touchCadastrar: {
     width: "200px",
-    backgroundColor: "dodgerblue",
+    backgroundColor: "forestgreen",
     padding: "10px",
     justifyContent: "center",
     alignItems: "center",

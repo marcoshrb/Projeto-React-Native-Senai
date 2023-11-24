@@ -32,7 +32,7 @@ export default function Eventos(props) {
 
   return (
     <View style={styles.Container}>
-      <View style={{ backgroundColor: "orange", flex: '1', justifyContent: "center", alignItems: "center", maxHeight: "80px" }}>
+      <View style={{ backgroundColor: "forestgreen", flex: '1', justifyContent: "center", alignItems: "center", maxHeight: "80px" }}>
         <Image
           source={require('../img/imgLogoArvore2.png')}
           style={{
@@ -43,6 +43,9 @@ export default function Eventos(props) {
         />
       </View>
       <View>
+        <Text style={{display: "flex", justifyContent: "center", marginTop: "10px", fontSize: "20px", fontWeight: "bold", fontStyle: "italic" }}>
+          EVENTOS
+        </Text>
 
         <View style={styles.BoxEventos}>
           <TouchableOpacity
@@ -93,7 +96,7 @@ export default function Eventos(props) {
                 setSelected(day.dateString);
               }}
               markedDates={{
-                [selected]: { selected: true, disableTouchEvent: true, selectedDotColor: 'orange' }
+                [selected]: { selected: true, disableTouchEvent: true, selectedDotColor: 'forestgreen' }
               }}
               style={styles.calendario}
             />
@@ -161,7 +164,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'orange',
+    backgroundColor: 'forestgreen',
     padding: '15px',
     borderRadius: '15px',
     margin: '15px',
@@ -176,7 +179,8 @@ const styles = StyleSheet.create({
     color: 'black',
     fontSize: '20px',
     fontWeight: '500',
-    textAlign: 'center'
+    textAlign: 'center',
+    fontStyle: "italic"
   },
   buttonReservar: {
     flex: 1,
