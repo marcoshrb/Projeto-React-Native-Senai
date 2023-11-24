@@ -5,25 +5,7 @@ import { UtilsContext } from "./Context";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Input } from 'react-native-elements';
 
-function Container(props) {
-  return (
-    <View style={props.style}>
-      {props.children}
-    </View>
-  )
-}
 
-
-// const conexacaoHost = async (name, age) => {
-
-//   try {
-//     const response = await axios.post("http://localhost:8080/user", { name, age});
-//     console.log('Resposta da API: ', response);
-//   } catch (error) {
-//     console.error('Erro ao enviar', error)
-//   }
-
-// }
 
 export default function Cadastro(props) {
 
