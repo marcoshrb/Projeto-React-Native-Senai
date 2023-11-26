@@ -3,6 +3,7 @@ import { useState, useContext } from "react"
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, ImageBackground } from "react-native";
 import { UtilsContext } from "./Context";
 import { Calendar, LocaleConfig } from 'react-native-calendars';
+import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
 import { Ionicons } from '@expo/vector-icons'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Input } from 'react-native-elements';
@@ -43,7 +44,7 @@ export default function Eventos(props) {
         />
       </View>
       <View>
-        <Text style={{display: "flex", justifyContent: "center", marginTop: "10px", fontSize: "20px", fontWeight: "bold", fontStyle: "italic" }}>
+        <Text style={{ display: "flex", justifyContent: "center", marginTop: "10px", fontSize: "20px", fontWeight: "bold", fontStyle: "italic" }}>
           EVENTOS
         </Text>
 
@@ -67,6 +68,7 @@ export default function Eventos(props) {
               }}
               style={styles.calendario}
             />
+
             <View style={{ flex: "1", flexDirection: "row" }}>
               <TouchableOpacity
                 style={styles.buttonDeletar}>
@@ -100,6 +102,18 @@ export default function Eventos(props) {
               }}
               style={styles.calendario}
             />
+
+            <Table borderStyle={{ borderWidth: 0 }}>
+              <TableWrapper style={styles.wrapper}>
+
+                <Rows data={[
+                  ['Apto', 'Morador'],
+                  ['a', 'b'],
+
+                ]} flexArr={[1, 2]} style={styles.row} textStyle={styles.text} />
+              </TableWrapper>
+            </Table>
+
             <View style={{ flex: "1", flexDirection: "row" }}>
               <TouchableOpacity
                 style={styles.buttonDeletar}>
@@ -164,7 +178,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'forestgreen',
+    backgroundColor: 'yellowgreen',
     padding: '15px',
     borderRadius: '15px',
     margin: '15px',
@@ -201,6 +215,10 @@ const styles = StyleSheet.create({
     minWidth: "40%",
     borderRadius: "10px",
     margin: "10px"
-  }
+  },
+
+  wrapper: { flexDirection: 'row' },
+  row: { height: 28 },
+  text: { textAlign: 'center' },
 
 });
