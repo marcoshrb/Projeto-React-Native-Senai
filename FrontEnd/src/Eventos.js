@@ -33,11 +33,11 @@ export default function Eventos(props) {
 
   return (
     <View style={styles.Container}>
-      
-      <Logo/>
+
+      <Logo />
 
       <View>
-        <Text style={{ display: "flex", justifyContent: "center", marginTop: "10px", fontSize: "20px", fontWeight: "bold", fontStyle: "italic" }}>
+        <Text style={{ display: "flex", justifyContent: "center", marginTop: "10px", fontSize: "20px", fontWeight: "bold", fontStyle: "italic", color: 'white' }}>
           EVENTOS
         </Text>
 
@@ -96,16 +96,18 @@ export default function Eventos(props) {
               style={styles.calendario}
             />
 
-            <Table borderStyle={{ borderWidth: 0 }}>
-              <TableWrapper style={styles.wrapper}>
+            <View style={styles.cardTable}>
+              <Table borderStyle={{ borderWidth: 0 }}>
+                <TableWrapper style={styles.wrapper}>
 
-                <Rows data={[
-                  ['Apto', 'Morador'],
-                  ['a', 'b'],
+                  <Rows data={[
+                    ['Apto', 'Morador'],
+                    ['a', 'b'],
 
-                ]} flexArr={[1, 2]} style={styles.row} textStyle={styles.text} />
-              </TableWrapper>
-            </Table>
+                  ]} flexArr={[1, 2]} style={styles.row} textStyle={styles.text} />
+                </TableWrapper>
+              </Table>
+            </View>
 
             <View style={{ flex: "1", flexDirection: "row" }}>
               <TouchableOpacity
@@ -152,6 +154,9 @@ export default function Eventos(props) {
             </View>
           </View>
         )}
+        <View style= {{minHeight: '80px'}}>
+
+        </View>
 
 
       </View>
@@ -164,6 +169,8 @@ export default function Eventos(props) {
 
 const styles = StyleSheet.create({
   Container: {
+    overflow: 'scroll',
+    backgroundColor: 'black',
     flex: 1
   },
 
@@ -213,5 +220,13 @@ const styles = StyleSheet.create({
   wrapper: { flexDirection: 'row' },
   row: { height: 28 },
   text: { textAlign: 'center' },
+  
+  cardTable: {
+    backgroundColor: 'gray',
+    padding: '10px',
+    borderRadius: '5%',
+    margin: '5px'
+  }
+
 
 });

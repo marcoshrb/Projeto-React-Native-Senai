@@ -1,6 +1,6 @@
 // import axios from "axios";
 import { useState, useContext } from "react"
-import { StyleSheet, Text, View, Pressable, Modal } from "react-native";
+import { StyleSheet, Text, View, Pressable, Modal, Switch } from "react-native";
 import { UtilsContext } from "./Context";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Input } from 'react-native-elements';
@@ -8,51 +8,74 @@ import { Logo } from './LogoBar';
 import { Table, TableWrapper, Rows } from 'react-native-table-component';
 
 
+function SimNao(props) {
+  if (props == true) {
+    return (
+      <View >
+        <Text>Sim</Text>
+      </View>
+    );
+  }
+  else {
+    return (
+      <View>
+        <Text>Não</Text>
+      </View>
+    );
+  }
+
+}
+
 export default function Funcionarios(props) {
 
   const [modalVisible, setModalVisible] = useState(false);
+
+  const [notfy, setNotfy] = useState(false)
 
   return (
     <View style={styles.Container}>
 
       <Logo />
 
-      <Text style={{ display: "flex", justifyContent: "center", marginTop: "10px", fontSize: "20px", fontWeight: "bold", fontStyle: "italic" }}>
+      <Text style={{ display: "flex", justifyContent: "center", marginTop: "10px", fontSize: "20px", fontWeight: "bold", fontStyle: "italic", color: 'white' }}>
         FUNCIONÁRIOS
       </Text>
 
-      <Table borderStyle={{ borderWidth: 0 }} style={{margin: '10px'}}>
-        <TableWrapper style={styles.wrapper}>
+      <View style={styles.cardTable}>
 
-          <Rows data={[
-            ['Nome', 'Salrio', 'Ativo', ''],
-            ['a', 'b', 'c',
-              <Pressable
-                style={[styles.button, styles.buttonOpen]}
-                onPress={() => setModalVisible(true)}>
-                <Text style={styles.textStyle}>Editar</Text>
-              </Pressable>],
-            ['a', 'b', 'c',
-              <Pressable
-                style={[styles.button, styles.buttonOpen]}
-                onPress={() => setModalVisible(true)}>
-                <Text style={styles.textStyle}>Editar</Text>
-              </Pressable>],
-            ['a', 'b', 'c',
-              <Pressable
-                style={[styles.button, styles.buttonOpen]}
-                onPress={() => setModalVisible(true)}>
-                <Text style={styles.textStyle}>Editar</Text>
-              </Pressable>],
-            ['a', 'b', 'c',
-              <Pressable
-                style={[styles.button, styles.buttonOpen]}
-                onPress={() => setModalVisible(true)}>
-                <Text style={styles.textStyle}>Editar</Text>
-              </Pressable>]
-          ]} flexArr={[2, 1, 1]} style={styles.row} textStyle={styles.text} />
-        </TableWrapper>
-      </Table>
+        <Table borderStyle={{ borderWidth: 0 }} style={{ margin: '10px' }}>
+          <TableWrapper style={styles.wrapper}>
+
+            <Rows data={[
+              ['Nome', 'Salrio', 'Ativo', ''],
+              ['a', 'b', 'c',
+                <Pressable
+                  style={[styles.button, styles.buttonOpen]}
+                  onPress={() => setModalVisible(true)}>
+                  <Text style={styles.textStyle}>Editar</Text>
+                </Pressable>],
+              ['a', 'b', 'c',
+                <Pressable
+                  style={[styles.button, styles.buttonOpen]}
+                  onPress={() => setModalVisible(true)}>
+                  <Text style={styles.textStyle}>Editar</Text>
+                </Pressable>],
+              ['a', 'b', 'c',
+                <Pressable
+                  style={[styles.button, styles.buttonOpen]}
+                  onPress={() => setModalVisible(true)}>
+                  <Text style={styles.textStyle}>Editar</Text>
+                </Pressable>],
+              ['a', 'b', 'c',
+                <Pressable
+                  style={[styles.button, styles.buttonOpen]}
+                  onPress={() => setModalVisible(true)}>
+                  <Text style={styles.textStyle}>Editar</Text>
+                </Pressable>]
+            ]} flexArr={[2, 1, 1]} style={styles.row} textStyle={styles.text} />
+          </TableWrapper>
+        </Table>
+      </View>
 
       <View style={styles.centeredView}>
         <Modal
@@ -75,6 +98,23 @@ export default function Funcionarios(props) {
                 leftIcon={{ type: 'font-awesome', name: 'dollar' }}
                 placeholder='Salário:'
               />
+              <View >
+
+                <Text style={{display: 'inline-block'}}>Ativo:</Text>
+                <Switch
+                  onValueChange={() => setNotfy(!notfy)}
+                  value={notfy}
+                  trackColor={{ false: "#767577", true: "#87CEEB" }}
+                  thumbColor={"#D3D3D3"}
+                  activeThumbColor={"#f4f3f4"}
+                  style={styles.Switch}
+                  display= 'inline-block'
+                />
+                <Text style={{display:'inline-block'}}>
+                  {SimNao(notfy)}
+                </Text>
+
+              </View>
 
               <Pressable
                 style={[styles.button, styles.buttonOpen]}
@@ -97,6 +137,7 @@ export default function Funcionarios(props) {
 
 const styles = StyleSheet.create({
   Container: {
+    backgroundColor: 'black',
     flex: 1
   },
   centeredView: {
@@ -136,6 +177,13 @@ const styles = StyleSheet.create({
   modalText: {
     marginBottom: 15,
     textAlign: 'center',
+  },
+  cardTable: {
+    backgroundColor: 'gray',
+    padding: '10px',
+    borderRadius: '5%',
+    margin: '5px'
   }
+
 
 });

@@ -6,15 +6,6 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { Input } from 'react-native-elements';
 import { Logo } from './LogoBar';
 
-function Container(props) {
-  return (
-    <View style={props.style}>
-      {props.children}
-    </View>
-  )
-}
-
-
 export default function Financeiro(props) {
 
   return (
@@ -22,7 +13,7 @@ export default function Financeiro(props) {
       
       <Logo/>      
       
-      <Text style={{ display: "flex", justifyContent: "center", marginTop: "10px", fontSize: "20px", fontWeight: "bold", fontStyle: "italic" }}>
+      <Text style={{ display: "flex", justifyContent: "center", marginTop: "10px", fontSize: "20px", fontWeight: "bold", fontStyle: "italic" ,  color: 'white'}}>
         FINANCEIRO
       </Text>
     </View>
@@ -31,6 +22,7 @@ export default function Financeiro(props) {
 
 const styles = StyleSheet.create({
   Container: {
+    backgroundColor: 'black',
     flex: 1
   },
 

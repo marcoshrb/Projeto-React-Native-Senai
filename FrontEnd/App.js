@@ -46,10 +46,11 @@ export default function App() {
                                 return <Ionicons name={iconName} size={size} color={color} />;
                             },
                             tabBarActiveTintColor: 'yellowgreen',
-                            tabBarInactiveTintColor: 'gray',
+                            tabBarInactiveTintColor: 'white',
                             headerShown: false,
                             tabBarShowLabel: false,
                             tabBarStyle: {
+                                backgroundColor: 'gray',
                                 height: 60,
                                 position: 'absolute',
                                 bottom: 16,

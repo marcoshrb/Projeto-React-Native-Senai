@@ -12,9 +12,9 @@ export default function TelaInicial(props) {
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
-    <View style={styles.container}>
-     
-      <Logo/>
+    <View style={styles.Container}>
+
+      <Logo />
 
       {BoxesNavigaton ? (
         <View style={styles.Boxes}>
@@ -55,88 +55,93 @@ export default function TelaInicial(props) {
       ) : (
         <View>
           <View>
-            <TouchableOpacity onPress={() => setBoxesNavigaton(true)} style={{margin : '10px', fontWeight: "bold", display: 'block'}}>
+            <TouchableOpacity onPress={() => setBoxesNavigaton(true)} style={{ margin: '10px', fontWeight: "bold", display: 'block', width: '25%' }}>
               <Icon
                 name='reply'
                 size={24}
-                color='black'
+                color='white'
                 display="inline-block"
               />
-              <Text style={{display : "inline-block", margin:'10px'}}>Voltar</Text>
+              <Text style={{ display: "inline-block", margin: '10px', color: 'white' }}>Voltar</Text>
             </TouchableOpacity>
 
-            <Text style={{ display: "flex", justifyContent: "center", marginTop: "10px", fontSize: "20px", fontWeight: "bold", fontStyle: "italic" }}>
+            <Text style={{ display: "flex", justifyContent: "center", marginTop: "10px", fontSize: "20px", fontWeight: "bold", fontStyle: "italic", color: 'white' }}>
               Bloco A
             </Text>
-            <Table borderStyle={{ borderWidth: 0 }}>
-              <TableWrapper style={styles.wrapper}>
+            <View style={styles.cardTable}>
+              <Table borderStyle={{ borderWidth: 0 }}>
+                <TableWrapper style={styles.wrapper}>
 
-                <Rows data={[
-                  ['Apto', 'Morador', 'Vaga', ''],
-                  ['a', 'b', 'c',
-                    <Pressable
-                      style={[styles.button, styles.buttonOpen]}
-                      onPress={() => setModalVisible(true)}>
-                      <Text style={styles.textStyle}>Editar</Text>
-                    </Pressable>],
-                  ['a', 'b', 'c',
-                    <Pressable
-                      style={[styles.button, styles.buttonOpen]}
-                      onPress={() => setModalVisible(true)}>
-                      <Text style={styles.textStyle}>Editar</Text>
-                    </Pressable>],
-                  ['a', 'b', 'c',
-                    <Pressable
-                      style={[styles.button, styles.buttonOpen]}
-                      onPress={() => setModalVisible(true)}>
-                      <Text style={styles.textStyle}>Editar</Text>
-                    </Pressable>],
-                  ['a', 'b', 'c',
-                    <Pressable
-                      style={[styles.button, styles.buttonOpen]}
-                      onPress={() => setModalVisible(true)}>
-                      <Text style={styles.textStyle}>Editar</Text>
-                    </Pressable>]
-                ]} flexArr={[1, 2, 1]} style={styles.row} textStyle={styles.text} />
-              </TableWrapper>
-            </Table>
+                  <Rows data={[
+                    ['Apto', 'Morador', 'Vaga', ''],
+                    ['a', 'b', 'c',
+                      <Pressable
+                        style={[styles.button, styles.buttonOpen]}
+                        onPress={() => setModalVisible(true)}>
+                        <Text style={styles.textStyle}>Editar</Text>
+                      </Pressable>],
+                    ['a', 'b', 'c',
+                      <Pressable
+                        style={[styles.button, styles.buttonOpen]}
+                        onPress={() => setModalVisible(true)}>
+                        <Text style={styles.textStyle}>Editar</Text>
+                      </Pressable>],
+                    ['a', 'b', 'c',
+                      <Pressable
+                        style={[styles.button, styles.buttonOpen]}
+                        onPress={() => setModalVisible(true)}>
+                        <Text style={styles.textStyle}>Editar</Text>
+                      </Pressable>],
+                    ['a', 'b', 'c',
+                      <Pressable
+                        style={[styles.button, styles.buttonOpen]}
+                        onPress={() => setModalVisible(true)}>
+                        <Text style={styles.textStyle}>Editar</Text>
+                      </Pressable>]
+                  ]} flexArr={[1, 2, 1]} style={styles.row} textStyle={styles.text} />
+                </TableWrapper>
+              </Table>
+            </View>
 
-            <Text style={{ display: "flex", justifyContent: "center", marginTop: "10px", fontSize: "20px", fontWeight: "bold", fontStyle: "italic" }}>
+            <Text style={{ display: "flex", justifyContent: "center", marginTop: "10px", fontSize: "20px", fontWeight: "bold", fontStyle: "italic", color: 'white' }}>
               Bloco B
             </Text>
-            <Table borderStyle={{ borderWidth: 0 }}>
-              <TableWrapper style={styles.wrapper}>
 
-                <Rows data={[
-                  ['Apto', 'Morador', 'Vaga', ''],
-                  ['a', 'b', 'c',
-                    <Pressable
-                      style={[styles.button, styles.buttonOpen]}
-                      onPress={() => setModalVisible(true)}>
-                      <Text style={styles.textStyle}>Editar</Text>
-                    </Pressable>],
-                  ['a', 'b', 'c',
-                    <Pressable
-                      style={[styles.button, styles.buttonOpen]}
-                      onPress={() => setModalVisible(true)}>
-                      <Text style={styles.textStyle}>Editar</Text>
-                    </Pressable>],
-                  ['a', 'b', 'c',
-                    <Pressable
-                      style={[styles.button, styles.buttonOpen]}
-                      onPress={() => setModalVisible(true)}>
-                      <Text style={styles.textStyle}>Editar</Text>
-                    </Pressable>],
-                  ['a', 'b', 'c',
-                    <Pressable
-                      style={[styles.button, styles.buttonOpen]}
-                      onPress={() => setModalVisible(true)}>
-                      <Text style={styles.textStyle}>Editar</Text>
-                    </Pressable>]
+            <View style={styles.cardTable}>
+              <Table borderStyle={{ borderWidth: 0 }}>
+                <TableWrapper style={styles.wrapper}>
 
-                ]} flexArr={[1, 2, 1]} style={styles.row} textStyle={styles.text} />
-              </TableWrapper>
-            </Table>
+                  <Rows data={[
+                    ['Apto', 'Morador', 'Vaga', ''],
+                    ['a', 'b', 'c',
+                      <Pressable
+                        style={[styles.button, styles.buttonOpen]}
+                        onPress={() => setModalVisible(true)}>
+                        <Text style={styles.textStyle}>Editar</Text>
+                      </Pressable>],
+                    ['a', 'b', 'c',
+                      <Pressable
+                        style={[styles.button, styles.buttonOpen]}
+                        onPress={() => setModalVisible(true)}>
+                        <Text style={styles.textStyle}>Editar</Text>
+                      </Pressable>],
+                    ['a', 'b', 'c',
+                      <Pressable
+                        style={[styles.button, styles.buttonOpen]}
+                        onPress={() => setModalVisible(true)}>
+                        <Text style={styles.textStyle}>Editar</Text>
+                      </Pressable>],
+                    ['a', 'b', 'c',
+                      <Pressable
+                        style={[styles.button, styles.buttonOpen]}
+                        onPress={() => setModalVisible(true)}>
+                        <Text style={styles.textStyle}>Editar</Text>
+                      </Pressable>]
+
+                  ]} flexArr={[1, 2, 1]} style={styles.row} textStyle={styles.text} />
+                </TableWrapper>
+              </Table>
+            </View>
 
             <View style={{ flex: "1", flexDirection: "row" }}>
               <TouchableOpacity
@@ -188,7 +193,9 @@ export default function TelaInicial(props) {
 }
 
 const styles = StyleSheet.create({
+
   Container: {
+    backgroundColor: 'black',
     flex: 1
   },
   Boxes: {
@@ -233,8 +240,8 @@ const styles = StyleSheet.create({
   head: { height: 40, backgroundColor: '#f1f8ff' },
   wrapper: { flexDirection: 'row' },
   title: { flex: 1, backgroundColor: '#f6f8fa' },
-  row: { height: 28 },
-  text: { textAlign: 'center' },
+  row: { height: 30 },
+  text: { textAlign: 'center', color: 'white' },
 
   centeredView: {
     flex: 1,
@@ -260,7 +267,7 @@ const styles = StyleSheet.create({
   button: {
     padding: 10,
     borderRadius: '5%',
-    margin: '3px',
+    margin: '5px',
     elevation: 2,
   },
   buttonOpen: {
@@ -273,6 +280,12 @@ const styles = StyleSheet.create({
   modalText: {
     marginBottom: 15,
     textAlign: 'center',
+  },
+  cardTable: {
+    backgroundColor: 'gray',
+    padding: '10px',
+    borderRadius: '5%',
+    margin: '5px'
   }
 
 });

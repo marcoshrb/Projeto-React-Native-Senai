@@ -8,6 +8,17 @@ import { Logo } from './LogoBar';
 
 export default function Cadastro(props) {
 
+  const { utils, setUtils } = useContext(UtilsContext)
+
+  const [nome, setNome] = useState("")
+  const [apartamento, setApartamento] = useState("")
+  const [bloco, setBloco] = useState("")
+
+  function cadastrarTouch(){
+    setUtils({...utils, moradores : [...utils.moradores, { nome : nome, apartamento : apartamento, bloco : bloco}]})
+
+    props.navigation.navigate('TelaInicial');
+  }
   return (
     <View>
 
@@ -30,6 +41,7 @@ export default function Cadastro(props) {
             <Input
               style={styles.Inputs}
               placeholder='Nome:'
+              onChange={text => setNome(text)}
               leftIcon={
                 <Icon
                   name='user'
@@ -43,14 +55,16 @@ export default function Cadastro(props) {
               <Input
                 style={styles.Inputs}
                 placeholder='Apartamento:'
+                onChange={text => setApartamento(text)}
                 leftIcon={{ type: 'font-awesome', name: 'home' }}
               />
             </View>
             <View>
               <Input
                 style={styles.Inputs}
-                leftIcon={{ type: 'font-awesome', name: 'dropbox' }}
                 placeholder='Bloco:'
+                onChange={text => setBloco(text)}
+                leftIcon={{ type: 'font-awesome', name: 'dropbox' }}
               />
             </View>
 
@@ -58,6 +72,7 @@ export default function Cadastro(props) {
 
           <TouchableOpacity
             style={styles.touchCadastrar}
+            onPress={() => cadastrarTouch()}
           >
             <Text>Cadastrar</Text>
           </TouchableOpacity>
@@ -73,6 +88,7 @@ export default function Cadastro(props) {
 const styles = StyleSheet.create({
   Container: {
     flex: 1,
+    backgroundColor: 'black',
     alignItems: 'center',
     justifyContent: 'center'
   },
