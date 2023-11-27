@@ -4,6 +4,9 @@ import { Input } from 'react-native-elements';
 import { Table, TableWrapper, Rows } from 'react-native-table-component';
 import { Logo } from './LogoBar';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import axios from 'axios';
+
+const response = await axios.get("http://localhost:8080/morador");
 
 export default function TelaInicial(props) {
 
@@ -11,7 +14,11 @@ export default function TelaInicial(props) {
 
   const [modalVisible, setModalVisible] = useState(false);
 
-  return (
+  var data = response.data;
+
+  console.log(data);
+
+  return data.map((morador, index) => (
     <View style={styles.Container}>
 
       <Logo />
@@ -74,7 +81,7 @@ export default function TelaInicial(props) {
 
                   <Rows data={[
                     ['Apto', 'Morador', 'Vaga', ''],
-                    ['a', 'b', 'c',
+                    [morador.nome, 'b', 'c',
                       <Pressable
                         style={[styles.button, styles.buttonOpen]}
                         onPress={() => setModalVisible(true)}>
@@ -189,7 +196,7 @@ export default function TelaInicial(props) {
         </View>
       )}
     </View>
-  );
+  ));
 }
 
 const styles = StyleSheet.create({

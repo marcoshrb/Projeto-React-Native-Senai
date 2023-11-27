@@ -1,24 +1,33 @@
 // import axios from "axios";
 import { useState, useContext } from "react"
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, ImageBackground } from "react-native";
-import { UtilsContext } from "./Context";
+import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Input } from 'react-native-elements';
 import { Logo } from './LogoBar';
+import axios from 'axios';
 
 export default function Cadastro(props) {
-
-  const { utils, setUtils } = useContext(UtilsContext)
 
   const [nome, setNome] = useState("")
   const [apartamento, setApartamento] = useState("")
   const [bloco, setBloco] = useState("")
 
-  function cadastrarTouch(){
-    setUtils({...utils, moradores : [...utils.moradores, { nome : nome, apartamento : apartamento, bloco : bloco}]})
+  const dbConnect = async () => {
+    try {
+      const response = await axios.post("http://localhost:8080/morador", {
+        "name": nome,
+        "numAp": apartamento,
+        "numBlc": bloco,
+        "sindico": false,
+        "taxaCond" : false
+      });
 
-    props.navigation.navigate('TelaInicial');
+      console.log("Resposta da API", response);
+    } catch (error) {
+      console.error("Erro ao conectar", error);
+    }
   }
+
   return (
     <View>
 
@@ -72,7 +81,7 @@ export default function Cadastro(props) {
 
           <TouchableOpacity
             style={styles.touchCadastrar}
-            onPress={() => cadastrarTouch()}
+            onPress={() => dbConnect()}
           >
             <Text>Cadastrar</Text>
           </TouchableOpacity>

@@ -33,18 +33,6 @@ public class MoradorController {
         return listRes;
     }
 
-    @GetMapping("/cpf/{cpf}")
-    public List<MoradorModel> getMoradorByCpf(@PathVariable String cpf) {
-        List<MoradorModel> listRes = moradorService.findByCpf(cpf);
-        return listRes;
-    }
-
-    @GetMapping("/email/{email}")
-    public List<MoradorModel> getMoradorByEmail(@PathVariable String email) {
-        List<MoradorModel> listRes = moradorService.findByEmail(email);
-        return listRes;
-    }
-
     @PostMapping("")
     public void newMorador(@RequestBody MoradorModel newMorador) {
         moradorService.save(newMorador);
@@ -52,7 +40,7 @@ public class MoradorController {
 
     @PutMapping("/{id}")
     public void putMorador(@RequestBody MoradorModel newMorador, @PathVariable String id) {
-        moradorService.save((String) id, (String) newMorador.getName(), (String) newMorador.getSenha(), (int) newMorador.getNumAp(),
+        moradorService.save((String) id, (String) newMorador.getName(), (int) newMorador.getNumAp(),
                 (int) newMorador.getNumBlc(), newMorador.getSindico(), newMorador.getTaxaCond() );
     }
 

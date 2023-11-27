@@ -13,7 +13,6 @@ public class MoradorModel {
     @Id
     private String id;
     private String name;
-    private String senha;
     private int numAp;
     private int numBlc;
     private Boolean sindico;
