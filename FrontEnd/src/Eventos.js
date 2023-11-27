@@ -8,7 +8,7 @@ import { Ionicons } from '@expo/vector-icons'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Input } from 'react-native-elements';
 import { SelectList } from 'react-native-dropdown-select-list'
-
+import { Logo } from './LogoBar';
 
 export default function Eventos(props) {
 
@@ -33,16 +33,9 @@ export default function Eventos(props) {
 
   return (
     <View style={styles.Container}>
-      <View style={{ backgroundColor: "forestgreen", flex: '1', justifyContent: "center", alignItems: "center", maxHeight: "80px" }}>
-        <Image
-          source={require('../img/imgLogoArvore2.png')}
-          style={{
-            height: "60px",
-            width: "60px",
-            margin: "20px"
-          }}
-        />
-      </View>
+      
+      <Logo/>
+
       <View>
         <Text style={{ display: "flex", justifyContent: "center", marginTop: "10px", fontSize: "20px", fontWeight: "bold", fontStyle: "italic" }}>
           EVENTOS

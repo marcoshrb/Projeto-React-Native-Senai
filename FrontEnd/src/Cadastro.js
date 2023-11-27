@@ -4,14 +4,16 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, ImageBackgr
 import { UtilsContext } from "./Context";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Input } from 'react-native-elements';
-
-
+import { Logo } from './LogoBar';
 
 export default function Cadastro(props) {
 
   return (
-    <View style={styles.Container}>
-      <ImageBackground source={require('../img/foto-principal.jpg')} resizeMode="cover" style={styles.image}>
+    <View>
+
+      <Logo />
+      <View style={styles.Container}>
+
 
         <View style={styles.cardPrincipal}>
 
@@ -62,14 +64,17 @@ export default function Cadastro(props) {
 
 
         </View>
-      </ImageBackground>
+
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   Container: {
-    flex: 1
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   image: {
     flex: 1,
@@ -90,7 +95,7 @@ const styles = StyleSheet.create({
   },
   touchCadastrar: {
     width: "200px",
-    backgroundColor: "forestgreen",
+    backgroundColor: "yellowgreen",
     padding: "10px",
     justifyContent: "center",
     alignItems: "center",
@@ -98,7 +103,7 @@ const styles = StyleSheet.create({
     margin: "10px",
     marginBottom: "20px"
   },
-  touchCancelar :{
+  touchCancelar: {
     marginTop: "2px",
     marginBottom: "2px"
   }

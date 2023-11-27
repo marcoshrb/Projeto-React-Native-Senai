@@ -1,36 +1,26 @@
 import { useState, useContext, Component } from "react"
-import { StyleSheet, Text, View, TouchableOpacity, Image, Modal, Alert, Pressable } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, Image, Modal, Pressable } from "react-native";
 import { Input } from 'react-native-elements';
-import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
-
-
-
+import { Table, TableWrapper, Rows } from 'react-native-table-component';
+import { Logo } from './LogoBar';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default function TelaInicial(props) {
 
-  const [utils, setUtils] = useState({ users: [], BoxesNavigaton: false })
+  const [BoxesNavigaton, setBoxesNavigaton] = useState(true);
 
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
     <View style={styles.container}>
+     
+      <Logo/>
 
-      <View style={{ backgroundColor: "forestgreen", flex: '1', justifyContent: "center", alignItems: "center", maxHeight: "80px" }}>
-        <Image
-          source={require('../img/imgLogoArvore2.png')}
-          style={{
-            height: "60px",
-            width: "60px",
-            margin: "20px"
-          }}
-        />
-      </View>
-
-      {utils.BoxesNavigaton ? (
+      {BoxesNavigaton ? (
         <View style={styles.Boxes}>
 
           <View style={styles.BoxEventos}>
-            <TouchableOpacity onPress={() => setUtils.BoxesNavigaton(false)}>
+            <TouchableOpacity onPress={() => setBoxesNavigaton(false)}>
               <Text style={styles.infoText}>Morador</Text>
               <Text style={styles.infoText}>/ </Text>
               <Text style={styles.infoText}> Visitante</Text>
@@ -65,6 +55,16 @@ export default function TelaInicial(props) {
       ) : (
         <View>
           <View>
+            <TouchableOpacity onPress={() => setBoxesNavigaton(true)} style={{margin : '10px', fontWeight: "bold", display: 'block'}}>
+              <Icon
+                name='reply'
+                size={24}
+                color='black'
+                display="inline-block"
+              />
+              <Text style={{display : "inline-block", margin:'10px'}}>Voltar</Text>
+            </TouchableOpacity>
+
             <Text style={{ display: "flex", justifyContent: "center", marginTop: "10px", fontSize: "20px", fontWeight: "bold", fontStyle: "italic" }}>
               Bloco A
             </Text>
@@ -196,7 +196,7 @@ const styles = StyleSheet.create({
   },
   BoxEventos: {
     display: "inline-block",
-    backgroundColor: 'forestgreen',
+    backgroundColor: 'yellowgreen',
     padding: '15px',
     borderRadius: '15px',
     margin: '5px',

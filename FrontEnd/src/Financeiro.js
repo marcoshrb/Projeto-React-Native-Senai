@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, ImageBackgr
 import { UtilsContext } from "./Context";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Input } from 'react-native-elements';
+import { Logo } from './LogoBar';
 
 function Container(props) {
   return (
@@ -18,16 +19,9 @@ export default function Financeiro(props) {
 
   return (
     <View style={styles.Container}>
-      <View style={{ backgroundColor: "forestgreen", flex: '1', justifyContent: "center", alignItems: "center", maxHeight: "80px" }}>
-        <Image
-          source={require('../img/imgLogoArvore2.png')}
-          style={{
-            height: "60px",
-            width: "60px",
-            margin: "20px"
-          }}
-        />
-      </View>
+      
+      <Logo/>      
+      
       <Text style={{ display: "flex", justifyContent: "center", marginTop: "10px", fontSize: "20px", fontWeight: "bold", fontStyle: "italic" }}>
         FINANCEIRO
       </Text>

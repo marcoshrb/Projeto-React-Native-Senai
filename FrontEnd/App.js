@@ -11,7 +11,7 @@ import Eventos from './src/Eventos.js'
 import Financeiro from './src/Financeiro.js'
 import Funcionarios from './src/Funcionarios.js'
 
-import { Ionicons } from '@expo/vector-icons'
+import { Ionicons, FontAwesome  } from '@expo/vector-icons'
 import { useState, useContext } from 'react';
 
 
@@ -91,9 +91,9 @@ export default function App() {
                             options={{
                                 tabBarIcon: ({ color, size, focused }) => {
                                     if (focused) {
-                                        return <Ionicons name="bookmark" size={size} color={color} />
+                                        return <FontAwesome name="dollar" size={size} color={color} />
                                     }
-                                    return <Ionicons name="bookmark-outline" size={size} color={color} />
+                                    return <FontAwesome name="dollar" size={size} color={color} />
                                 }
                             }}
                         />
