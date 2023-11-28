@@ -13,17 +13,17 @@ export default function Login(props) {
 
   async function VerificacaoLogin() {
 
-    // const response = await axios.get("http://localhost:8080/morador");
+    const response = await axios.get("http://localhost:8080/morador");
 
-    // var data = response.data;
-    // var morador;
+    var data = response.data;
+    var morador;
 
-    // for (let i = 0; i < data.length; i++) {
-    //   if (data[i].nome == nome)
-    //     if (data[i].senha == senha) {
-    //       morador = data[i];
-    //     }
-    //   }
+    for (let i = 0; i < data.length; i++) {
+      if (data[i].nome == nome)
+        if (data[i].senha == senha) {
+          morador = data[i];
+        }
+      }
     setUtils({ ...user, isAuthenticated: true });
   }
 
