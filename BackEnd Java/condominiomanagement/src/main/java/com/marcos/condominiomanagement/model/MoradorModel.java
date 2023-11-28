@@ -13,8 +13,12 @@ public class MoradorModel {
     @Id
     private String id;
     private String name;
+    private String senha;
     private int numAp;
-    private int numBlc;
+    private String numBlc;
     private Boolean sindico;
     private Boolean taxaCond;
+    
+
+    public MoradorModel(){}
 }

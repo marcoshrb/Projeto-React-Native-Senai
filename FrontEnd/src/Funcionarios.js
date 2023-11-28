@@ -136,6 +136,7 @@ export default function Funcionarios(props) {
 }
 
 const styles = StyleSheet.create({
+  
   Container: {
     backgroundColor: 'black',
     flex: 1

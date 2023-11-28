@@ -21,6 +21,8 @@ public class MoradorController {
     @Autowired
     private MoradorService moradorService;
 
+    //get
+    
     @GetMapping("")
     public List<MoradorModel> getAllMoradores() {
         List<MoradorModel> listRes = moradorService.findAll();
@@ -33,16 +35,21 @@ public class MoradorController {
         return listRes;
     }
 
+    //post
+
     @PostMapping("")
     public void newMorador(@RequestBody MoradorModel newMorador) {
         moradorService.save(newMorador);
     }
 
-    @PutMapping("/{id}")
-    public void putMorador(@RequestBody MoradorModel newMorador, @PathVariable String id) {
-        moradorService.save((String) id, (String) newMorador.getName(), (int) newMorador.getNumAp(),
-                (int) newMorador.getNumBlc(), newMorador.getSindico(), newMorador.getTaxaCond() );
+    //put 
+
+    @PutMapping("/update/{id}")
+    public void putMorador(@RequestBody MoradorModel newMorador, @PathVariable String id){
+        moradorService.save((String)id, (String) newMorador.getName(), (String) newMorador.getSenha(), (int) newMorador.getNumAp(), (String) newMorador.getNumBlc(), newMorador.getSindico(), newMorador.getTaxaCond());
     }
+
+    //delete 
 
     @DeleteMapping("/delete/{id}")
     public void deleteUser(@PathVariable String id) {

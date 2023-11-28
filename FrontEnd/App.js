@@ -18,7 +18,7 @@ import { useState, useContext } from 'react';
 
 export default function App() {
 
-    const [utils, setUtils] = useState({ users: [], isAuthenticated: true })
+    const [utils, setUtils] = useState({ users: [], isAuthenticated: false })
 
     const Stack = createStackNavigator();
     const Tab = createBottomTabNavigator();

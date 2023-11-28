@@ -2,15 +2,29 @@ import { useState, useContext } from "react"
 import { StyleSheet, Text, View, TouchableOpacity, Image, ImageBackground } from "react-native";
 import { Input } from 'react-native-elements';
 import { UtilsContext } from './Context.js';
+import axios from 'axios';
 
 export default function Login(props) {
 
   const { user, isAuthenticated, setUtils } = useContext(UtilsContext);
-  
-  const [email, setEmail] = useState("")
 
-  function VerificacaoLogin() {
-    setUtils({...user, isAuthenticated: true});
+  const [nome, setNome] = useState("");
+  const [senha, setSenha] = useState("");
+
+  async function VerificacaoLogin() {
+
+    // const response = await axios.get("http://localhost:8080/morador");
+
+    // var data = response.data;
+    // var morador;
+
+    // for (let i = 0; i < data.length; i++) {
+    //   if (data[i].nome == nome)
+    //     if (data[i].senha == senha) {
+    //       morador = data[i];
+    //     }
+    //   }
+    setUtils({ ...user, isAuthenticated: true });
   }
 
   return (
@@ -30,30 +44,25 @@ export default function Login(props) {
         <View style={styles.cardPrincipal}>
 
           <Input
-            placeholder="Email:"
-            leftIcon={{ type: 'font-awesome', name: 'envelope' }}
+            placeholder="Nome:"
+            leftIcon={{ type: 'font-awesome', name: 'user' }}
             style={styles}
-            onChangeText={text => setEmail(text)}
+            onChangeText={text => setNome(text)}
           />
-          <Input 
-          placeholder="Confirmar senha" secureTextEntry={true} 
-          leftIcon={{ type: 'font-awesome', name: 'lock' }}
+          <Input
+            placeholder="Senha:"
+            secureTextEntry={true}
+            leftIcon={{ type: 'font-awesome', name: 'lock' }}
+            onChangeText={text => setSenha(text)}
           />
 
           <View style={styles.Botoes}>
-
 
             <TouchableOpacity
               style={styles.touchLogin}
               onPress={() => VerificacaoLogin()}
             >
               <Text>Login</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              style={styles.touchLogin}
-              onPress = {() => props.navigation.navigate("Cadastro")}>
-              <Text>Cadastrar</Text>
             </TouchableOpacity>
 
           </View>

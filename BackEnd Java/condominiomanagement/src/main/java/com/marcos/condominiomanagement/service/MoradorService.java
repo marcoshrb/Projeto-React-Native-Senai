@@ -18,10 +18,6 @@ public class MoradorService {
         return this.moradorRepository.save(moradorModel);
     }
 
-    public void save(String id, String name, int numAp, int numBlc, boolean sindico, boolean taxaCond){
-        this.moradorRepository.save(new MoradorModel(id, name, numAp, numBlc, sindico, taxaCond));
-    }
-
     public List<MoradorModel> findAll(){
         return (List<MoradorModel>) this.moradorRepository.findAll();
     }
@@ -30,7 +26,19 @@ public class MoradorService {
         return (List<MoradorModel>) this.moradorRepository.findByName(name);
     }
 
+    public List<MoradorModel> findByNumAp(String numAp){
+        return (List<MoradorModel>) this.moradorRepository.findByNumAp(numAp);
+    }
+
+    public List<MoradorModel> findByNumBlc(String numBlc){
+        return (List<MoradorModel>) this.moradorRepository.findByNumBlc(numBlc);
+    }
+
     public void delete(String id){
         this.moradorRepository.deleteById(id);
+    }
+
+    public void save(String id, String name, String senha, int numAp, String numBlc, Boolean sindico,
+            Boolean taxaCond) {
     }
 }

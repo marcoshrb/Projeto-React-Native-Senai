@@ -9,22 +9,28 @@ import axios from 'axios';
 export default function Cadastro(props) {
 
   const [nome, setNome] = useState("")
+  const [senha, setSenha] = useState("")
   const [apartamento, setApartamento] = useState("")
   const [bloco, setBloco] = useState("")
 
   const dbConnect = async () => {
+   
     try {
-      const response = await axios.post("http://localhost:8080/morador", {
-        "name": nome,
-        "numAp": apartamento,
-        "numBlc": bloco,
-        "sindico": false,
-        "taxaCond" : false
-      });
-
+      
+      const body = {
+        name : nome,
+        senha : senha,
+        numAp: apartamento,
+        numBlc: bloco,
+        sindico: false,
+        taxaCond: false
+      }
+      const response = await axios.post("http://localhost:8080/morador", body);
+      props.navigation.navigate('TelaInicial')
+              
       console.log("Resposta da API", response);
-    } catch (error) {
-      console.error("Erro ao conectar", error);
+    } catch (err) {
+      console.error("Erro ao conectar", err);
     }
   }
 
@@ -50,7 +56,7 @@ export default function Cadastro(props) {
             <Input
               style={styles.Inputs}
               placeholder='Nome:'
-              onChange={text => setNome(text)}
+              onChangeText={text => setNome(text)}
               leftIcon={
                 <Icon
                   name='user'
@@ -63,8 +69,17 @@ export default function Cadastro(props) {
             <View>
               <Input
                 style={styles.Inputs}
+                placeholder='Senha:'
+                onChangeText={text => setSenha(text)}
+                leftIcon={{ type: 'font-awesome', name: 'lock' }}
+              />
+            </View>
+
+            <View>
+              <Input
+                style={styles.Inputs}
                 placeholder='Apartamento:'
-                onChange={text => setApartamento(text)}
+                onChangeText={text => setApartamento(text)}
                 leftIcon={{ type: 'font-awesome', name: 'home' }}
               />
             </View>
@@ -72,16 +87,17 @@ export default function Cadastro(props) {
               <Input
                 style={styles.Inputs}
                 placeholder='Bloco:'
-                onChange={text => setBloco(text)}
+                onChangeText={text => setBloco(text)}
                 leftIcon={{ type: 'font-awesome', name: 'dropbox' }}
               />
             </View>
+
 
           </View>
 
           <TouchableOpacity
             style={styles.touchCadastrar}
-            onPress={() => dbConnect()}
+            onPress={dbConnect}
           >
             <Text>Cadastrar</Text>
           </TouchableOpacity>
