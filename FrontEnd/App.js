@@ -11,19 +11,17 @@ import Eventos from './src/Eventos.js'
 import Financeiro from './src/Financeiro.js'
 import Funcionarios from './src/Funcionarios.js'
 
-import { Ionicons, FontAwesome  } from '@expo/vector-icons'
+import { Ionicons, FontAwesome } from '@expo/vector-icons'
 import { useState, useContext } from 'react';
 
 
 
 export default function App() {
 
-    const [utils, setUtils] = useState({ users: [], isAuthenticated: false })
+    const [utils, setUtils] = useState({ users: [], isAuthenticated: false, IsAdm: false })
 
     const Stack = createStackNavigator();
     const Tab = createBottomTabNavigator();
-
-    const { user, utilsContext } = useContext(UtilsContext);
 
 
     return (
@@ -98,40 +96,47 @@ export default function App() {
                                 }
                             }}
                         />
-                        <Tab.Screen
-                            name="Funcionarios"
-                            component={Funcionarios}
-                            options={{
-                                tabBarIcon: ({ color, size, focused }) => {
-                                    if (focused) {
-                                        return <Ionicons name="person" size={size} color={color} />
+                        {utils.IsAdm ?? (
+                            <Tab.Screen
+                                name="Funcionarios"
+                                component={Funcionarios}
+                                options={{
+                                    tabBarIcon: ({ color, size, focused }) => {
+                                        if (focused) {
+                                            return <Ionicons name="person" size={size} color={color} />
+                                        }
+                                        return <Ionicons name="person-outline" size={size} color={color} />
                                     }
-                                    return <Ionicons name="person-outline" size={size} color={color} />
-                                }
-                            }}
-                        />
-                        
-                     
-                        <Tab.Screen
-                            name="Cadastro"
-                            component={Cadastro}
-                            options={{
-                                tabBarIcon: ({ color, size, focused }) => {
-                                    if (focused) {
-                                        return <Ionicons name="person-add" size={size} color={color} />
-                                    }
-                                    return <Ionicons name="person-add-outline" size={size} color={color} />
-                                }
-                            }}
-                        />
-                      
+                                }}
+                            />
+                        )
+                        }
+
+                        {
+                            utils.IsAdm ?? (
+
+                                <Tab.Screen
+                                    name="Cadastro"
+                                    component={Cadastro}
+                                    options={{
+                                        tabBarIcon: ({ color, size, focused }) => {
+                                            if (focused) {
+                                                return <Ionicons name="person-add" size={size} color={color} />
+                                            }
+                                            return <Ionicons name="person-add-outline" size={size} color={color} />
+                                        }
+                                    }}
+                                />
+                            )
+                        }
+
 
                     </Tab.Navigator>
 
                 ) : (
                     <Stack.Navigator>
                         <Stack.Screen name="Login" component={Login} />
-                        
+
                     </Stack.Navigator>
                 )}
             </UtilsContext.Provider>

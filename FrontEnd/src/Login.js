@@ -6,25 +6,39 @@ import axios from 'axios';
 
 export default function Login(props) {
 
-  const { user, isAuthenticated, setUtils } = useContext(UtilsContext);
+  const { user, isAuthenticated, IsAdm, setUtils } = useContext(UtilsContext);
+
 
   const [nome, setNome] = useState("");
   const [senha, setSenha] = useState("");
+  const [nomeNaoEncontrado, setNaoEncontrado] = useState(false);
 
   async function VerificacaoLogin() {
 
     const response = await axios.get("http://localhost:8080/morador");
 
+    console.log(response);
+
     var data = response.data;
     var morador;
 
     for (let i = 0; i < data.length; i++) {
-      if (data[i].nome == nome)
+      if (data[i].name == nome){
         if (data[i].senha == senha) {
           morador = data[i];
+          if(morador.sindico == true){
+            console.log("aaaaaaaaaa");
+            setUtils({ ...user, isAuthenticated: true, IsAdm: true });
+          } 
+          else{
+            setUtils({ ...user, isAuthenticated: true, IsAdm: false });
+          }
         }
       }
-    setUtils({ ...user, isAuthenticated: true });
+      else
+        setNaoEncontrado(true);
+      
+    }
   }
 
   return (
@@ -55,6 +69,12 @@ export default function Login(props) {
             leftIcon={{ type: 'font-awesome', name: 'lock' }}
             onChangeText={text => setSenha(text)}
           />
+          {nomeNaoEncontrado ? (
+            <Text style={styles.alerts}>*User ou Senha Incorreta</Text>
+            ): (
+              <Text></Text>
+            )
+            }
 
           <View style={styles.Botoes}>
 
@@ -110,5 +130,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderRadius: "10px",
     margin: "10px"
+  },
+  alerts: {
+    color: "red"
   }
 });

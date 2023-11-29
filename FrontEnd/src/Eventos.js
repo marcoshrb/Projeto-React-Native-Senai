@@ -12,6 +12,8 @@ import { Logo } from './LogoBar';
 
 export default function Eventos(props) {
 
+  const [utils, setUtils] = useState({ users: [], isAuthenticated: false, IsAdm: false })
+
   const [selected, setSelected] = useState('');
 
   const [visibleChurrasqueiras, setVisibleChurrasqueiras] = useState(false);
@@ -62,16 +64,19 @@ export default function Eventos(props) {
               style={styles.calendario}
             />
 
-            <View style={{ flex: "1", flexDirection: "row" }}>
-              <TouchableOpacity
-                style={styles.buttonDeletar}>
-                <Text >Deletar</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={styles.buttonReservar}>
-                <Text >Marcar</Text>
-              </TouchableOpacity>
-            </View>
+            {utils.IsAdm ?? (
+
+              <View style={{ flex: "1", flexDirection: "row" }}>
+                <TouchableOpacity
+                  style={styles.buttonDeletar}>
+                  <Text >Deletar</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={styles.buttonReservar}>
+                  <Text >Marcar</Text>
+                </TouchableOpacity>
+              </View>
+            )}
           </View>
         )}
 
@@ -109,16 +114,19 @@ export default function Eventos(props) {
               </Table>
             </View>
 
-            <View style={{ flex: "1", flexDirection: "row" }}>
-              <TouchableOpacity
-                style={styles.buttonDeletar}>
-                <Text >Deletar</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={styles.buttonReservar}>
-                <Text >Marcar</Text>
-              </TouchableOpacity>
-            </View>
+            {utils.IsAdm ?? (
+
+              <View style={{ flex: "1", flexDirection: "row" }}>
+                <TouchableOpacity
+                  style={styles.buttonDeletar}>
+                  <Text >Deletar</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={styles.buttonReservar}>
+                  <Text >Marcar</Text>
+                </TouchableOpacity>
+              </View>
+            )}
           </View>
         )}
 
@@ -142,19 +150,23 @@ export default function Eventos(props) {
               }}
               style={styles.calendario}
             />
-            <View style={{ flex: "1", flexDirection: "row" }}>
-              <TouchableOpacity
-                style={styles.buttonDeletar}>
-                <Text >Deletar</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={styles.buttonReservar}>
-                <Text >Marcar</Text>
-              </TouchableOpacity>
-            </View>
+            
+            {utils.IsAdm ?? (
+
+              <View style={{ flex: "1", flexDirection: "row" }}>
+                <TouchableOpacity
+                  style={styles.buttonDeletar}>
+                  <Text >Deletar</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={styles.buttonReservar}>
+                  <Text >Marcar</Text>
+                </TouchableOpacity>
+              </View>
+            )}
           </View>
         )}
-        <View style= {{minHeight: '80px'}}>
+        <View style={{ minHeight: '80px' }}>
 
         </View>
 
@@ -220,7 +232,7 @@ const styles = StyleSheet.create({
   wrapper: { flexDirection: 'row' },
   row: { height: 28 },
   text: { textAlign: 'center' },
-  
+
   cardTable: {
     backgroundColor: 'gray',
     padding: '10px',
