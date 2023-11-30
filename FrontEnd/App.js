@@ -96,7 +96,7 @@ export default function App() {
                                 }
                             }}
                         />
-                        {utils.IsAdm ?? (
+                        {utils.IsAdm ? (
                             <Tab.Screen
                                 name="Funcionarios"
                                 component={Funcionarios}
@@ -109,11 +109,13 @@ export default function App() {
                                     }
                                 }}
                             />
+                        ) : (
+                            <></>
                         )
                         }
 
                         {
-                            utils.IsAdm ?? (
+                            utils.IsAdm ? (
 
                                 <Tab.Screen
                                     name="Cadastro"
@@ -127,6 +129,8 @@ export default function App() {
                                         }
                                     }}
                                 />
+                            ) : (
+                                <></>
                             )
                         }
 

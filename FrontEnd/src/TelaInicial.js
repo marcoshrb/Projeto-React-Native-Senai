@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react"
-import { StyleSheet, Text, View, TouchableOpacity, Image, Modal, Pressable } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, Image, Modal, Pressable, ScrollView } from "react-native";
 import { Input } from 'react-native-elements';
 import { Table, TableWrapper, Rows } from 'react-native-table-component';
 import { Logo } from './LogoBar';
@@ -11,8 +11,12 @@ const response = await axios.get("http://localhost:8080/morador");
 
 export function Tabela(props) {
 
-  const {utils, setUtils, IsAdm} = useContext(UtilsContext)
+  const { utils, setUtils, IsAdm } = useContext(UtilsContext)
   const [moradores, setMoradores] = useState([])
+
+  const [modalVisible, setModalVisible] = useState(false)
+
+
 
   useEffect(() => {
 
@@ -28,21 +32,41 @@ export function Tabela(props) {
     fetchData();
   }, []);
 
+  async function deleteUser(id) {
+    try {
+      await axios.delete("http://localhost:8080/morador/delete/" + id);
+      setMoradores((prevMoradores) => prevMoradores.filter((morador) => morador.id !== id));
+    }
+    catch (error) {
+      console.error("Erro ao deletar morador.");
+    }
+  }
+
+
   return moradores.map((morador, index) => (
     <View>
       {utils.IsAdm ? (
         <View>
           <Table key={index} borderStyle={{ borderWidth: 0 }}>
             <TableWrapper style={styles.wrapper}>
-              <Rows data={[
-                [morador.numAp, morador.name, 'c',
-                <Pressable
-                  style={[styles.button, styles.buttonOpen]}
-                  onPress={() => setModalVisible(true)}>
-                  <Text style={styles.textStyle}>Editar</Text>
-                </Pressable>
-                ]
-              ]} flexArr={[1, 2, 1]} style={styles.row} textStyle={styles.text} />
+              {morador.sindico == false ? (
+
+                <Rows data={[
+                  [morador.numAp, morador.name, 'c',
+                  <Pressable
+                    style={[styles.button, styles.buttonOpen]}
+                    onPress={() => setModalVisible(true)}>
+
+                  </Pressable>,
+                  <Pressable
+                    style={[styles.button, styles.buttonDelete]}
+                    onPress={() => deleteUser(morador.id)}>
+                  </Pressable>
+                  ]
+                ]} flexArr={[1, 2, 1]} style={styles.row} textStyle={styles.text} />
+              ):(
+                <></>
+              )}
             </TableWrapper>
           </Table>
 
@@ -59,12 +83,24 @@ export function Tabela(props) {
                   <Text style={styles.modalText}>Editar</Text>
                   <Input
                     style={styles.Inputs}
+                    leftIcon={{ type: 'font-awesome', name: 'home' }}
+                    value = {morador.numAp}
+                
+                  />
+                  <Input
+                    style={styles.Inputs}
                     leftIcon={{ type: 'font-awesome', name: 'user' }}
-                    placeholder='Morador:'
+                    value = {morador.name}
+                    
+                  />
+                  <Input
+                    style={styles.Inputs}
+                    leftIcon={{ type: 'font-awesome', name: 'user' }}
+                    placeholder='Vaga:'
                   />
                   <Pressable
                     style={[styles.button, styles.buttonOpen]}
-                    onPress={() => setModalVisible(!modalVisible)}>
+                    onPress={() => atualizarUser(morador.id).setModalVisible(!modalVisible)}>
                     <Text style={styles.textStyle}>Salvar</Text>
                   </Pressable>
                   <Pressable
@@ -94,7 +130,7 @@ export function Tabela(props) {
 
 export default function TelaInicial(props) {
 
-  const {utils} = useContext(UtilsContext)
+  const { utils } = useContext(UtilsContext)
 
   const [BoxesNavigaton, setBoxesNavigaton] = useState(true);
 
@@ -131,7 +167,7 @@ export default function TelaInicial(props) {
               <Text style={styles.infoText}>Financeiro</Text>
             </TouchableOpacity>
           </View>
-          {utils.IsAdm === true ? 
+          {utils.IsAdm === true ?
             <>
               <View style={styles.BoxEventos}>
                 <TouchableOpacity onPress={() => props.navigation.navigate('Funcionarios')}>
@@ -148,6 +184,7 @@ export default function TelaInicial(props) {
             :
             <></>
           }
+
         </View>
       ) : (
         <View>
@@ -169,7 +206,7 @@ export default function TelaInicial(props) {
               <Table borderStyle={{ borderWidth: 0 }}>
                 <TableWrapper style={styles.wrapper}>
                   <Rows data={[
-                    ['Apto', 'Morador', 'Vaga', ''],
+                    ['Apto', 'Morador', 'Vaga', 'Editar', 'Excluir'],
                   ]} flexArr={[1, 2, 1]} style={styles.row} textStyle={styles.text} />
                 </TableWrapper>
               </Table>
@@ -184,7 +221,7 @@ export default function TelaInicial(props) {
               <Table borderStyle={{ borderWidth: 0 }}>
                 <TableWrapper style={styles.wrapper}>
                   <Rows data={[
-                    ['Apto', 'Morador', 'Vaga', ''],
+                    ['Apto', 'Morador', 'Vaga', 'Editar', 'Excluir'],
                   ]} flexArr={[1, 2, 1]} style={styles.row} textStyle={styles.text} />
                 </TableWrapper>
               </Table>
@@ -192,7 +229,7 @@ export default function TelaInicial(props) {
 
             </View>
 
-            {utils.IsAdm ? 
+            {utils.IsAdm ?
               <View style={{ flex: "1", flexDirection: "row" }}>
                 <TouchableOpacity
                   style={styles.buttonCadastrar}
@@ -223,6 +260,7 @@ const styles = StyleSheet.create({
   },
   Boxes: {
     display: 'block',
+
   },
   BoxEventos: {
     display: "inline-block",
@@ -295,6 +333,9 @@ const styles = StyleSheet.create({
   },
   buttonOpen: {
     backgroundColor: 'yellowgreen',
+  },
+  buttonDelete: {
+    backgroundColor: 'red'
   },
   textStyle: {
     color: 'white',

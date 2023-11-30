@@ -1,6 +1,7 @@
 // import axios from "axios";
 import { useState, useContext } from "react"
 import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
+import RNPickerSelect from "react-native-picker-select";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Input } from 'react-native-elements';
 import { Logo } from './LogoBar';
@@ -14,12 +15,12 @@ export default function Cadastro(props) {
   const [bloco, setBloco] = useState("")
 
   const dbConnect = async () => {
-   
+
     try {
-      
+
       const body = {
-        name : nome,
-        senha : senha,
+        name: nome,
+        senha: senha,
         numAp: apartamento,
         numBlc: bloco,
         sindico: false,
@@ -27,7 +28,7 @@ export default function Cadastro(props) {
       }
       const response = await axios.post("http://localhost:8080/morador", body);
       props.navigation.navigate('TelaInicial')
-              
+
       console.log("Resposta da API", response);
     } catch (err) {
       console.error("Erro ao conectar", err);
@@ -84,15 +85,18 @@ export default function Cadastro(props) {
               />
             </View>
             <View>
-              <Input
-                style={styles.Inputs}
-                placeholder='Bloco:'
-                onChangeText={text => setBloco(text)}
-                leftIcon={{ type: 'font-awesome', name: 'dropbox' }}
+              Bloco:
+            </View>
+            <View>
+              <RNPickerSelect
+                onValueChange={(value) => setBloco(value)}
+                items={[
+                  { label: "A", value: "A" },
+                  { label: "B", value: "B" },
+                ]}
+                style={styles.pickerSelectStyles}
               />
             </View>
-
-
           </View>
 
           <TouchableOpacity
@@ -147,5 +151,16 @@ const styles = StyleSheet.create({
   touchCancelar: {
     marginTop: "2px",
     marginBottom: "2px"
+  },
+  pickerSelectStyles :{
+    fontSize: 16,
+      paddingVertical: 12,
+      paddingHorizontal: 10,
+      borderWidth: 1,
+      borderColor: 'gray',
+      borderRadius: 4,
+      color: 'black',
+      paddingRight: 30 
   }
 });
+
